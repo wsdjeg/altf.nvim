@@ -3,12 +3,26 @@
 <!-- vim-markdown-toc GFM -->
 
 - [Intro](#intro)
+- [Installation](#installation)
 - [Custom alternate file](#custom-alternate-file)
 
 <!-- vim-markdown-toc -->
 ## Intro
 
 altf.nvim is a neovim plugin to manager alternate files in project.
+And it is next version of [a.lua](https://github.com//wsdjeg/SpaceVim/blob/eed9d8f14951d9802665aa3429e449b71bb15a3a/lua/spacevim/plugin/a.lua#L1) in SpaceVim.
+
+## Installation
+
+- use [nvim-plug](https://github.com/wsdjeg/nvim-plug)
+
+```lua
+require("plug").add({
+	{
+		"wsdjeg/altf.nvim",
+	},
+})
+```
 
 ## Custom alternate file
 
