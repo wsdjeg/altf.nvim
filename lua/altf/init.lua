@@ -7,7 +7,10 @@
 --=============================================================================
 
 local M = {}
--- local toml = require('spacevim.api.data.toml')
+local ok, toml = pcall(require, "toml")
+if not ok then
+	toml = nil
+end
 local fn = vim.fn
 
 local util = require("altf.util")
@@ -75,14 +78,17 @@ end
 
 local function get_project_config(conf_file)
 	local conf
-	-- if conf_file:sub(-4) == 'toml' then
-	--   conf = toml.parse_file(conf_file)
-	-- else
-	conf = vim.json.decode(fn.join(fn.readfile(conf_file), "\n"))
-	-- end
-	-- util.debug(vim.inspect(conf))
+	if conf_file:sub(-4) == "toml" then
+		if toml then
+			conf = toml.parse_file(conf_file)
+		end
+	else
+		conf = vim.json.decode(fn.join(fn.readfile(conf_file), "\n"))
+	end
 	if type(conf) ~= "table" then
 		conf = {}
+	else
+		util.debug(vim.inspect(conf))
 	end
 	local root = util.unify_path(conf_file, ":p:h")
 	return {
