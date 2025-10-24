@@ -191,6 +191,9 @@ end
 function M.complete(arglead, cmdline, cursorpos)
 	local file = util.unify_path(fn.bufname("%"), ":.")
 	local conf_file_path = M.getConfigPath()
+	if vim.fn.filereadable(conf_file_path) == 0 then
+		return ""
+	end
 	local alt_config_json = get_project_config(conf_file_path)
 
 	M.get_alt(file, conf_file_path, 0, "")
