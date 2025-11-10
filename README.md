@@ -1,5 +1,12 @@
 # altf.nvim
 
+altf.nvim is a project alternate file manager for neovim.
+
+[![GitHub License](https://img.shields.io/github/license/wsdjeg/altf.nvim)](LICENSE)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/wsdjeg/altf.nvim)](https://github.com/wsdjeg/altf.nvim/issues)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/wsdjeg/altf.nvim)](https://github.com/wsdjeg/altf.nvim/commits/master/)
+[![GitHub Release](https://img.shields.io/github/v/release/wsdjeg/altf.nvim)](https://github.com/wsdjeg/altf.nvim/releases)
+
 <!-- vim-markdown-toc GFM -->
 
 - [Intro](#intro)
