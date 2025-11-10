@@ -5,6 +5,8 @@
 - [Intro](#intro)
 - [Installation](#installation)
 - [Custom alternate file](#custom-alternate-file)
+    - [Using toml alternate configuration](#using-toml-alternate-configuration)
+    - [Using buffer scoped variable](#using-buffer-scoped-variable)
 
 <!-- vim-markdown-toc -->
 ## Intro
@@ -43,6 +45,12 @@ here is an example of `.project_alt.json`:
 }
 ```
 
+### Using toml alternate configuration
+
+```lua
+require('altf').set_config_name(vim.fn.getcwd(), '.project_alt.toml')
+```
+
 Instead of using json file, the alternate file manager also support `.project_alt.toml` file, for example:
 
 Note: if you want to use toml file, you need to install `wsdjeg/toml.nvim`
@@ -54,23 +62,37 @@ Note: if you want to use toml file, you need to install `wsdjeg/toml.nvim`
     test = "test/layer/lang/{}.vader"
 ```
 
-If you do not want to use configuration file,
-or want to override the default configuration in alternate config file, `b:alternate_file_config`
-can be used in bootstrap function, for example:
+### Using buffer scoped variable
 
-```vim
-augroup myspacevim
-    autocmd!
-    autocmd BufNewFile,BufEnter *.c let b:alternate_file_config = {
-        \ "src/*.c" : {
-            \ "doc" : "docs/{}.md",
-            \ "alternate" : "include/{}.h",
-            \ }
-        \ }
-    autocmd BufNewFile,BufEnter *.h let b:alternate_file_config = {
-        \ "include/*.h" : {
-            \ "alternate" : "scr/{}.c",
-            \ }
-        \ }
-augroup END
+If you do not want to use configuration file,
+or want to override the default altf configuration, setup `b:alternate_file_config` for the buffer.
+for example:
+
+```lua
+local augroup = vim.api.nvim_create_augroup("altf-custom", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
+	pattern = { "*.c" },
+	group = augroup,
+	callback = function(ev)
+		vim.api.nvim_buf_set_var(ev.buf, "alternate_file_config", {
+			["src/*.c"] = {
+				doc = "docs/{}.md",
+				alternate = "include/{}.h",
+			},
+		})
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
+	pattern = { "*.h" },
+	group = augroup,
+	callback = function(ev)
+		vim.api.nvim_buf_set_var(ev.buf, "alternate_file_config", {
+			["include/*.h"] = {
+				alternate = "src/{}.c",
+			},
+		})
+	end,
+})
 ```
