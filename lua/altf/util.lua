@@ -3,7 +3,7 @@ local M = {}
 local nt
 local log
 
-function M.notify(msg)
+function M.notify(msg, color)
 	if not nt then
 		pcall(function()
 			nt = require("notify")
@@ -12,7 +12,7 @@ function M.notify(msg)
 	if not nt then
 		return
 	end
-	nt.notify(msg)
+	nt.notify(msg, color)
 end
 
 function M.info(msg)
