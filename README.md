@@ -14,12 +14,18 @@ altf.nvim is a project alternate file manager for neovim.
 - [Custom alternate file](#custom-alternate-file)
     - [Using toml alternate configuration](#using-toml-alternate-configuration)
     - [Using buffer scoped variable](#using-buffer-scoped-variable)
+- [Credits](#credits)
+- [Self-Promotion](#self-promotion)
+- [License](#license)
 
 <!-- vim-markdown-toc -->
+
 ## Intro
 
-altf.nvim is a neovim plugin to manager alternate files in project.
-And it is next version of [a.lua](https://github.com//wsdjeg/SpaceVim/blob/eed9d8f14951d9802665aa3429e449b71bb15a3a/lua/spacevim/plugin/a.lua#L1) in SpaceVim.
+altf.nvim is a lightweight project alternate files manager for neovim, it helps you quickly switch between alternate files.
+Such as source and docs, source and test files, implementation and header pairs, or related modules in your project.
+
+With altf.nvim, you can jump between alternate files with a single command `:A`.
 
 ## Installation
 
@@ -103,3 +109,21 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
 	end,
 })
 ```
+
+## Credits
+
+- [a.lua](https://github.com//wsdjeg/SpaceVim/blob/eed9d8f14951d9802665aa3429e449b71bb15a3a/lua/spacevim/plugin/a.lua)
+- [vim-projectionist](https://github.com/tpope/vim-projectionist)
+- [a.vim](https://github.com/vim-scripts/a.vim)
+
+## Self-Promotion
+
+Like this plugin? Star the repository on
+GitHub.
+
+Love this plugin? Follow [me](https://wsdjeg.net/) on
+[GitHub](https://github.com/wsdjeg).
+
+## License
+
+This project is licensed under the GPL-3.0 License.
