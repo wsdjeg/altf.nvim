@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/wsdjeg/altf.nvim/compare/v1.0.0...v1.1.0) (2025-11-24)
+
+
+### Features
+
+* support luarocks ([fc788f0](https://github.com/wsdjeg/altf.nvim/commit/fc788f003a9499437b783c1b663e16b0dfce938b))
+
 ## 1.0.0 (2025-11-10)
 
 
