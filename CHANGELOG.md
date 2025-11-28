@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/wsdjeg/altf.nvim/compare/v1.1.0...v1.1.1) (2025-11-28)
+
+
+### Bug Fixes
+
+* update readme ([ed959e0](https://github.com/wsdjeg/altf.nvim/commit/ed959e0a45190fe1b38666f725fde0d3fbe4b800))
+
 ## [1.1.0](https://github.com/wsdjeg/altf.nvim/compare/v1.0.0...v1.1.0) (2025-11-24)
 
 
