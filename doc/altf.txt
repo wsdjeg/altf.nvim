@@ -1,0 +1,131 @@
+*altf.nvim* A Project Alternate File Manager for Neovim
+
+Author: Eric Wong <wsdjeg@outlook.com>
+Url: https://github.com/wsdjeg/altf.nvim
+
+==============================================================================
+CONTENTS                                                              *altf*
+
+  1. Introduction                                        |altf-introduction|
+  2. Installation                                        |altf-installation|
+  3. Custom alternate file with json                      |altf-custom-json|
+  4. Custom alternate file with toml                      |altf-custom-toml|
+  5. Custom alternate file with buffer variable         |altf-custom-buffer|
+  6. Credits                                                  |altf-credits|
+  7. Self-Promotion                                    |altf-self-promotion|
+  8. License                                                  |altf-license|
+
+==============================================================================
+ 1. INTRODUCTION                                         *altf-introduction*
+
+altf.nvim is a lightweight project alternate files manager for neovim, it
+helps you quickly switch between alternate files. Such as source and docs,
+source and test files, implementation and header pairs, or related modules
+in your project.
+
+With altf.nvim, you can jump between alternate files with a single
+command `:A`.
+
+==============================================================================
+ 2. Installation                                         *altf-installation*
+
+Using nvim-plug <https://github.com/wsdjeg/nvim-plug>
+
+>
+    require("plug").add({
+	    {
+		    "wsdjeg/altf.nvim",
+	    },
+    })
+<
+
+==============================================================================
+ 3. Custom alternate file with json                       *altf-custom-json*
+
+To manage the alternate file of the project, you need to create a
+`.project_alt.json` file in the root of your project. Then you can use the
+command `:A` to jump to the alternate file of current file. You can also
+specific the type of alternate file, for example `:A doc`. With a bang `:A!`,
+altf.nvim will parse the configuration file additionally. If no type is
+specified, the default type `alternate` will be used.
+
+here is an example of `.project_alt.json`:
+>
+    {
+      "autoload/SpaceVim/layers/lang/*.vim": {
+        "doc": "docs/layers/lang/{}.md",
+        "test": "test/layer/lang/{}.vader"
+      }
+    }
+<
+==============================================================================
+ 4. Custom alternate file with toml                       *altf-custom-toml*
+>
+    require('altf').set_config_name(vim.fn.getcwd(), '.project_alt.toml')
+<
+Instead of using json file, the alternate file manager also support
+`.project_alt.toml` file, for example:
+
+Note: if you want to use toml file, you need to install `wsdjeg/toml.nvim`
+>
+    ["autoload/SpaceVim/layers/lang/*.vim"]
+        # You can use comments in toml file.
+        doc = "docs/layers/lang/{}.md"
+        test = "test/layer/lang/{}.vader"
+<
+==============================================================================
+ 5. Custom alternate file with buffer variable          *altf-custom-buffer*
+
+If you do not want to use configuration file, or want to override the
+default altf configuration, setup `b:alternate_file_config` for the buffer.
+for example:
+>
+    local augroup = vim.api.nvim_create_augroup("altf-custom",
+        { clear = true })
+
+    vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
+        pattern = { "*.c" },
+        group = augroup,
+        callback = function(ev)
+            vim.api.nvim_buf_set_var(ev.buf, "alternate_file_config", {
+                ["src/*.c"] = {
+                    doc = "docs/{}.md",
+                    alternate = "include/{}.h",
+                },
+            })
+        end,
+    })
+
+    vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
+        pattern = { "*.h" },
+        group = augroup,
+        callback = function(ev)
+            vim.api.nvim_buf_set_var(ev.buf, "alternate_file_config", {
+                ["include/*.h"] = {
+                    alternate = "src/{}.c",
+                },
+            })
+        end,
+    })
+<
+==============================================================================
+ 6. Credits                                                   *altf-credits*
+
+- a.lua - https://github.com/wsdjeg/SpaceVim/blob/master/lua/spacevim/plugin/a.lua
+- vim-projectionist - https://github.com/tpope/vim-projectionist
+- a.vim - https://github.com/vim-scripts/a.vim
+
+==============================================================================
+ 7. Self-Promotion                                     *altf-self-promotion*
+
+Like this plugin? Star the repository on GitHub.
+
+Love this plugin? Follow me <https://wsdjeg.net/> on GitHub
+<https://github.com/wsdjeg>.
+
+==============================================================================
+ 8. License                                                   *altf-license*
+
+This project is licensed under the GPL-3.0 License.
+
+ vim:cc=78:tw=78:ts=4:sw=4:et:ft=help:norl:
