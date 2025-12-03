@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/wsdjeg/altf.nvim/compare/v1.1.1...v1.2.0) (2025-12-03)
+
+
+### Features
+
+* add `:help altf` ([c1bf399](https://github.com/wsdjeg/altf.nvim/commit/c1bf399b37ab828ac77efd9ca6f47db5071ac6ff))
+
+
+### Bug Fixes
+
+* update release-please-action ([39cbc03](https://github.com/wsdjeg/altf.nvim/commit/39cbc030e4c776e6ee240ae078b5c0668814059a))
+
 ## [1.1.1](https://github.com/wsdjeg/altf.nvim/compare/v1.1.0...v1.1.1) (2025-11-28)
 
 
