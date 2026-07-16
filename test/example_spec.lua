@@ -22,8 +22,8 @@ end
 function TestExample:test_set_config_name_and_get_config_path()
 	altf.set_config_name('/test/path', '.custom_alt.json')
 	-- getConfigPath uses the current working directory by default
-	-- so we just verify the function doesn't error
-	lu.assertStr(altf.getConfigPath())
+	-- so we just verify the function returns a string
+	lu.assertIsString(altf.getConfigPath())
 	-- Reset to default
 	altf.set_config_name('_', '.project_alt.json')
 end
