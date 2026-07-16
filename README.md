@@ -2,10 +2,12 @@
 
 altf.nvim is a project alternate file manager for neovim.
 
+[![Run Tests](https://github.com/wsdjeg/altf.nvim/actions/workflows/test.yml/badge.svg)](https://github.com/wsdjeg/altf.nvim/actions/workflows/test.yml)
 [![GitHub License](https://img.shields.io/github/license/wsdjeg/altf.nvim)](LICENSE)
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/wsdjeg/altf.nvim)](https://github.com/wsdjeg/altf.nvim/issues)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/wsdjeg/altf.nvim)](https://github.com/wsdjeg/altf.nvim/commits/master/)
 [![GitHub Release](https://img.shields.io/github/v/release/wsdjeg/altf.nvim)](https://github.com/wsdjeg/altf.nvim/releases)
+[![luarocks](https://img.shields.io/luarocks/v/wsdjeg/altf.nvim)](https://luarocks.org/modules/wsdjeg/altf.nvim)
 
 <!-- vim-markdown-toc GFM -->
 
@@ -127,3 +129,4 @@ Love this plugin? Follow [me](https://wsdjeg.net/) on
 ## License
 
 This project is licensed under the GPL-3.0 License.
+
