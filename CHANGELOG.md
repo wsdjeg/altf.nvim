@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/wsdjeg/altf.nvim/compare/v1.2.0...v1.2.1) (2026-07-16)
+
+
+### Bug Fixes
+
+* **test:** use assertIsString instead of invalid assertStr ([ea3479c](https://github.com/wsdjeg/altf.nvim/commit/ea3479cb8e77c87b5ec0754fbeeba1fc72dbcbcd))
+
 ## [1.2.0](https://github.com/wsdjeg/altf.nvim/compare/v1.1.1...v1.2.0) (2025-12-03)
 
 
